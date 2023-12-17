@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"  href="test.css"/>
+<meta charset="utf-8">	
+<title>{{title}}</title>
+</head>
+<body>
+	<h3 >{{equipeA}}</h3>
+	<h4>{{joueursA}}</h4><br>
+	<br>
+	<br>
+	<h3 >{{equipeB}}</h3>
+	<h4>{{joueursB}}</h4><br>
+
+<p id="scoreA">
+	
+</p>
+<br>
+<p id="scoreB">
+	
+</p>
+<script type="text/javascript">
+async function requete ()
+{
+	await fetch("http://127.0.0.1/api/demandeScore").then(res =>{	
+		if(res.ok){
+			return res.json();
+		}
+	})
+	.then((value)  => {
+		console.log(value);
+		document.write(value.scoreA);
+		document.write(value.scoreB)
+	})
+	.catch(function(err){
+		alert("erreur");
+	});
+}
+
+setInterval(requete,2000);
+
+
+</script>
+
+	
+</body>	
+</html>
+
